@@ -1,26 +1,14 @@
-/// <reference types="vite/client" />
-import {
-  HeadContent,
-  Link,
-  Outlet,
-  Scripts,
-  createRootRoute,
-} from '@tanstack/react-router'
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/tanstack-react-start'
+import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/tanstack-react-start'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import { createServerFn } from '@tanstack/react-start'
-import * as React from 'react'
-import { getAuth } from '@clerk/tanstack-react-start/server'
-import { getWebRequest } from '@tanstack/react-start/server'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary.js'
+import { createServerFn } from '@tanstack/react-start'
+import { getWebRequest } from '@tanstack/react-start/server'
 import { NotFound } from '~/components/NotFound.js'
-import appCss from '~/styles/app.css?url'
+import { getAuth } from '@clerk/tanstack-react-start/server'
+import * as React from 'react'
+
+import cssUrl from '~/styles.css?url'
 
 const fetchClerkAuth = createServerFn({ method: 'GET' }).handler(async () => {
   const { userId } = await getAuth(getWebRequest()!)
@@ -42,7 +30,7 @@ export const Route = createRootRoute({
       },
     ],
     links: [
-      { rel: 'stylesheet', href: appCss },
+      { rel: 'stylesheet', href: cssUrl },
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
