@@ -2,12 +2,14 @@ node_modules
 package-lock.json
 yarn.lock
 
-!.env
+.env*
+!.env.example
 .DS_Store
 .cache
 .vercel
 .output
 .vinxi
+.vscode
 
 /build/
 /api/
