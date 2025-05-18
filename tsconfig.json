@@ -11,11 +11,12 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "ES2022",
-    "allowJs": true,
+    "allowJs": false,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
+      "@db/*": ["./src/db/*"],
       "@ui/*": ["./src/components/ui/*"],
       "@hooks/*": ["./src/lib/hooks/*"],
     },
