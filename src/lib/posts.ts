@@ -1,5 +1,5 @@
-import { notFound } from '@tanstack/react-router'
 import { createServerFn } from '@tanstack/react-start'
+import { notFound } from '@tanstack/react-router'
 import axios from 'redaxios'
 
 export type PostType = {

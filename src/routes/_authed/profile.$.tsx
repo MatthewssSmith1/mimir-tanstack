@@ -1,5 +1,9 @@
 import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
 import { fetchPosts } from '~/lib/posts.js'
+import { Textarea } from '@ui/textarea'
+import { useState } from 'react'
+import { Button } from '@ui/button'
+import { insertNode } from '@models/nodes'
 
 export const Route = createFileRoute('/_authed/profile/$')({
   loader: () => fetchPosts(),
@@ -7,6 +11,7 @@ export const Route = createFileRoute('/_authed/profile/$')({
 })
 
 function PostsComponent() {
+  const [text, setText] = useState('')
   const posts = Route.useLoaderData()
 
   return (
@@ -32,6 +37,10 @@ function PostsComponent() {
         )}
       </ul>
       <hr />
+      <Textarea value={text} onChange={(e) => setText(e.target.value)} />
+      <Button onClick={() => {setText(''); insertNode({ data: { content: text } }) }}>
+        Create Post
+      </Button>
       <Outlet />
     </div>
   )

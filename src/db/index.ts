@@ -1,15 +1,10 @@
-import { drizzle } from 'drizzle-orm/node-postgres';
+import { drizzle } from 'drizzle-orm/neon-http'
 import * as schema from '@db/schema.js'
-import { Pool } from 'pg';
+import { neon } from '@neondatabase/serverless'
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
-});
-
-export const db = drizzle(pool, { 
-  schema,
-  logger: process.env.NODE_ENV !== 'production'
-});
+export const db = drizzle(
+  neon(process.env.DATABASE_URL!), 
+  { schema, logger: process.env.NODE_ENV !== 'production' }
+);
 
 export type Database = typeof db;

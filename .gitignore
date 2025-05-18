@@ -13,6 +13,7 @@ yarn.lock
 .vinxi
 .vscode
 
+/docs/tanstack/
 /build/
 /api/
 /server/build
